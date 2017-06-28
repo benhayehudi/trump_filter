@@ -1,9 +1,3 @@
-PATH
-  remote: .
-  specs:
-    trump_filter (0.1.0)
-      nokogiri
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,12 +23,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.14)
+  nokogiri
   puma
   rake
   shotgun
   sinatra
-  trump_filter!
 
 BUNDLED WITH
    1.14.6

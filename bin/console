@@ -1,7 +1,12 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "trump_filter"
+$LOAD_PATH.unshift
+File.expand_path('..', __FILE__)
+require_relative '../lib/trump_filter'
+require_relative '../lib/trump_filter/scraper'
+
+TrumpFilter::CLI.new.call
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.

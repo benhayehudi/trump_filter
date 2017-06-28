@@ -1,5 +1,5 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('..', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'trump_filter/version'
 
@@ -28,6 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "nokogiri"
   spec.add_dependency "puma"
   spec.add_dependency "sinatra"
-  spec.add_dependency "rake"
   spec.add_dependency "shotgun"
 end

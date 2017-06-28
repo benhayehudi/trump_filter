@@ -1,21 +1,24 @@
 class TrumpFilter::Scraper
 
+  attr_accessor :title, :link, :message, :date
+
   def self.scrape_headline_news
-    doc = Nokogiri::HTML(open("https://news.google.com/news/section?cf=all&pz=1&topic=n&siidp=295b6c301c20ea36b29285743b52b796b431&ict=ln"))
+    doc = Nokogiri::HTML(open("https://news.google.com/news/headlines?ned=us&hl=en"))
     @news_parsed = []
     @news_link_parsed = []
-    doc.css("div.blended-wrapper.blended-wrapper-first").each do |headline|
-      @news_parsed << {
-        :title => headline.css("h2.esc-lead-article-title").text
-      }
-    end
-    doc.css("div.blended-wrapper.blended-wrapper-first").each do |link|
-      @news_link_parsed << {
-        :link => link.css("a").attribute("href").text
-      }
-    end
-  #  "#{@news_parsed[0][:title]}"
-  #  "#{@news_parsed[0][:link]}"
+    # doc.css("c-wiz.PaqQNc.PBWx0c").each do |headline|
+    #   @news_parsed << {
+    #     :title => headline.css("a.nuEeue").first.text
+    #   }
+    # end
+    @news_parsed << doc.css("c-wiz.PaqQNc.PBWx0c").css("a.nuEeue").first.text
+    @news_link_parsed << doc.css("c-wiz.PaqQNc.PBWx0c c-wiz.M1Uqc.kWyHVd a.nuEeue").attribute("href").text
+    #   @news_link_parsed << {
+    #     :link => link.css("a").attribute("href").text
+    #   }
+    # end
+    puts "#{@news_parsed[0]}"
+    puts "#{@news_link_parsed[0]}"
   end
 
   def self.scrape_trump_tweet
@@ -33,11 +36,11 @@ class TrumpFilter::Scraper
   end
 
   def self.get_news_title
-    "#{@news_parsed[0][:title]}"
+    "#{@news_parsed[0]}"
   end
 
   def self.get_news_link
-    "<a href='#{@news_link_parsed[0][:link]}'>#{@news_link_parsed[0][:link]}</a>"
+    "<a href='#{@news_link_parsed[0]}'>#{@news_link_parsed[0]}</a>"
 
   #  "#{@news_parsed[0][:link]}"
   end
