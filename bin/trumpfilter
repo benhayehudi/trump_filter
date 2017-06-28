@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 $LOAD_PATH.unshift
 File.expand_path('..', __FILE__)
-require_relative '../lib/trump_filter'
-require_relative '../lib/trump_filter/scraper'
+require_relative '../var/app/current/lib/trump_filter'
+require_relative '../var/app/current/lib/trump_filter/scraper'
 
 TrumpFilter::CLI.new.call
